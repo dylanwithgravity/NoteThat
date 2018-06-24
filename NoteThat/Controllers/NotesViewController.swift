@@ -74,8 +74,18 @@ class NotesViewController: UITableViewController {
                 
                 let newNote = Note(context: self.context)
                 newNote.title = textField.text
+                self.noteArray.append(newNote)
+                self.saveNotes()
             }
         }
+        
+        alert.addAction(action)
+        
+        alert.addTextField { (field) in
+            textField = field
+            textField.placeholder = "Add a new Note"
+        }
+        present(alert, animated: true, completion: nil)
         
     }
     
